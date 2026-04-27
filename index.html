@@ -3,767 +3,311 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jayvardhan Gaikwad — DevOps & Platform Engineer</title>
-<meta name="description" content="Senior DevOps & Platform Engineer specializing in Kubernetes, MLOps, GPU Inference, Terraform, and Azure/AWS cloud infrastructure.">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<title>Jayvardhan Gaikwad — DevOps | MLOps Engineer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --bg: #0a0e1a;
-    --bg2: #0f1524;
-    --bg3: #151c30;
-    --card: #111827;
-    --border: rgba(99,210,255,0.12);
-    --border2: rgba(99,210,255,0.25);
-    --accent: #63d2ff;
-    --accent2: #a78bfa;
-    --accent3: #34d399;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --dim: #475569;
-    --mono: 'JetBrains Mono', monospace;
-    --sans: 'Syne', sans-serif;
-  }
+/* ===== ROOT ===== */
+:root {
+  --bg:#050816;
+  --card:rgba(255,255,255,0.05);
+  --border:rgba(255,255,255,0.1);
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --accent:#4f9cf9;
+  --accent2:#7c3aed;
+}
 
-  html { scroll-behavior: smooth; }
+/* LIGHT MODE */
+body.light {
+  --bg:#ffffff;
+  --text:#0f172a;
+  --muted:#475569;
+  --card:#ffffff;
+}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    line-height: 1.6;
-    min-height: 100vh;
-  }
+/* ===== GLOBAL ===== */
+*{margin:0;padding:0;box-sizing:border-box}
 
-  /* NAV */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(10,14,26,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav-logo {
-    font-family: var(--mono);
-    font-size: 0.85rem;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 1.5rem; }
-  .nav-links a {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--accent); }
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-  /* HERO */
-  .hero {
-    padding: 6rem 2rem 4rem;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  .hero-tag {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .hero-tag::before {
-    content: '';
-    width: 24px; height: 1px;
-    background: var(--accent);
-    display: inline-block;
-  }
-  .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-  }
-  .hero h1 .name { color: var(--accent); }
-  .hero h1 .role { color: var(--text); display: block; }
-  .hero-desc {
-    font-size: 1.1rem;
-    color: var(--muted);
-    max-width: 600px;
-    margin-bottom: 2.5rem;
-    line-height: 1.7;
-  }
-  .hero-chips {
-    display: flex; flex-wrap: wrap; gap: 0.5rem;
-    margin-bottom: 2.5rem;
-  }
-  .chip {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    padding: 0.3rem 0.75rem;
-    border: 1px solid var(--border2);
-    border-radius: 100px;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-  }
-  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary {
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    padding: 0.75rem 1.5rem;
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    transition: opacity 0.2s;
-    display: inline-block;
-  }
-  .btn-primary:hover { opacity: 0.85; }
-  .btn-ghost {
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    padding: 0.75rem 1.5rem;
-    background: transparent;
-    color: var(--accent);
-    border: 1px solid var(--border2);
-    border-radius: 6px;
-    cursor: pointer;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
-    display: inline-block;
-  }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--text); }
+/* ===== BACKGROUND CANVAS ===== */
+#bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+}
 
-  /* STATS BAR */
-  .stats-bar {
-    background: var(--bg2);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 1.5rem 2rem;
-    display: flex; justify-content: center; gap: 0;
-    overflow-x: auto;
-  }
-  .stat {
-    flex: 1; min-width: 120px; max-width: 200px;
-    text-align: center;
-    padding: 0 1.5rem;
-    border-right: 1px solid var(--border);
-  }
-  .stat:last-child { border-right: none; }
-  .stat-num {
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: var(--accent);
-    line-height: 1;
-    margin-bottom: 0.25rem;
-  }
-  .stat-label {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
+/* ===== CURSOR GLOW ===== */
+.cursor{
+  position:fixed;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:radial-gradient(circle,var(--accent),transparent);
+  pointer-events:none;
+  z-index:999;
+}
 
-  /* SECTIONS */
-  section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
-  .section-header {
-    display: flex; align-items: center; gap: 1rem;
-    margin-bottom: 3rem;
-  }
-  .section-num {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-  }
-  .section-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-  .section-line {
-    flex: 1; height: 1px;
-    background: var(--border);
-  }
+/* ===== NAV ===== */
+nav{
+  position:fixed;
+  width:100%;
+  padding:1.2rem 3rem;
+  display:flex;
+  justify-content:space-between;
+  backdrop-filter:blur(16px);
+  background:rgba(0,0,0,0.4);
+  z-index:100;
+}
 
-  /* PROJECT CARDS */
-  .projects-grid { display: flex; flex-direction: column; gap: 1.5rem; }
-  .project-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .project-card:hover {
-    border-color: var(--border2);
-    transform: translateY(-2px);
-  }
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-  }
-  .card-blue::before   { background: linear-gradient(90deg, #63d2ff, #a78bfa); }
-  .card-green::before  { background: linear-gradient(90deg, #34d399, #06b6d4); }
-  .card-purple::before { background: linear-gradient(90deg, #a78bfa, #f472b6); }
-  .card-amber::before  { background: linear-gradient(90deg, #fbbf24, #34d399); }
-  .card-teal::before   { background: linear-gradient(90deg, #06b6d4, #63d2ff); }
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:20px;
+}
 
-  .project-header {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    margin-bottom: 1rem; gap: 1rem;
-  }
-  .project-category {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--accent);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-  .project-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    line-height: 1.3;
-  }
-  .project-badge {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    padding: 0.25rem 0.6rem;
-    background: rgba(99,210,255,0.1);
-    border: 1px solid var(--border2);
-    border-radius: 100px;
-    color: var(--accent);
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .project-desc {
-    font-size: 0.95rem;
-    color: var(--muted);
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
-  }
-  .project-metrics {
-    display: flex; flex-wrap: wrap; gap: 0.75rem;
-    margin-bottom: 1.5rem;
-  }
-  .metric {
-    display: flex; align-items: center; gap: 0.4rem;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.4rem 0.75rem;
-  }
-  .metric-val {
-    font-family: var(--mono);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--accent3);
-  }
-  .metric-label { font-size: 0.75rem; color: var(--muted); }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .tag {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    padding: 0.2rem 0.6rem;
-    background: var(--bg3);
-    border-radius: 4px;
-    color: var(--dim);
-    letter-spacing: 0.05em;
-  }
-  .project-insight {
-    margin-top: 1.25rem;
-    padding: 1rem 1.25rem;
-    background: var(--bg3);
-    border-left: 2px solid var(--accent);
-    border-radius: 0 6px 6px 0;
-    font-size: 0.85rem;
-    color: var(--muted);
-    font-style: italic;
-    line-height: 1.6;
-  }
+nav a:hover{color:var(--accent)}
 
-  /* SKILLS */
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-  .skill-group {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.25rem;
-  }
-  .skill-group-title {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-  .skill-items { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-  .skill-item {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    padding: 0.2rem 0.55rem;
-    background: var(--bg3);
-    border-radius: 4px;
-    color: var(--muted);
-  }
+/* ===== HERO ===== */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
 
-  /* EXPERIENCE */
-  .exp-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 2rem;
-  }
-  .exp-header {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;
-  }
-  .exp-role { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .exp-company { font-size: 0.9rem; color: var(--accent); }
-  .exp-period {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--muted);
-    background: var(--bg3);
-    padding: 0.3rem 0.75rem;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-  }
-  .exp-bullets { list-style: none; }
-  .exp-bullets li {
-    font-size: 0.9rem;
-    color: var(--muted);
-    padding: 0.35rem 0 0.35rem 1.25rem;
-    position: relative;
-    border-bottom: 1px solid var(--border);
-    line-height: 1.6;
-  }
-  .exp-bullets li:last-child { border-bottom: none; }
-  .exp-bullets li::before {
-    content: '›';
-    position: absolute; left: 0;
-    color: var(--accent);
-    font-weight: 700;
-  }
+.hero h1{
+  font-size:clamp(2.5rem,6vw,4rem);
+  font-weight:800;
+}
 
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 3rem 2rem;
-    text-align: center;
-  }
-  .footer-name {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-  }
-  .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; }
-  .footer-links a {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    transition: color 0.2s;
-  }
-  .footer-links a:hover { color: var(--accent); }
+.gradient{
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 
-  .glow-dot {
-    display: inline-block;
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent3);
-    margin-right: 0.5rem;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.85); }
-  }
+.hero p{
+  margin-top:20px;
+  color:var(--muted);
+  max-width:600px;
+}
 
-  @media (max-width: 600px) {
-    .stats-bar { flex-wrap: wrap; }
-    .stat { min-width: 50%; border-right: none; border-bottom: 1px solid var(--border); }
-    nav { padding: 0.75rem 1rem; }
-    .nav-links { gap: 0.75rem; }
-    .hero { padding: 4rem 1rem 3rem; }
-    section { padding: 3rem 1rem; }
-    .project-header { flex-direction: column; }
-  }
+/* BUTTON */
+.btn{
+  margin-top:30px;
+  padding:12px 25px;
+  border-radius:8px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* ===== SECTION ===== */
+.section{
+  padding:100px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+/* ===== GRID ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+/* ===== CARD ===== */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:25px;
+  transition:0.4s;
+  transform-style:preserve-3d;
+}
+
+.card:hover{
+  transform:rotateY(6deg) rotateX(6deg) scale(1.03);
+  border-color:var(--accent);
+}
+
+/* ===== COUNTER ===== */
+.counter{
+  font-size:2rem;
+  font-weight:800;
+  color:var(--accent);
+}
+
+/* ===== THEME BUTTON ===== */
+.theme{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  padding:12px;
+  border-radius:50%;
+  border:none;
+  background:var(--accent);
+  color:white;
+  cursor:pointer;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:60px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+}
+
 </style>
 </head>
+
 <body>
 
+<canvas id="bg"></canvas>
+<div class="cursor"></div>
+
 <nav>
-  <a class="nav-logo" href="#">JAY.GAIKWAD</a>
-  <div class="nav-links">
+  <b>JAY.G</b>
+  <div>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="https://www.linkedin.com/in/jay-gaikwad8482/" target="_blank">LinkedIn ↗</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-tag">Available for freelance &amp; remote work</div>
-  <h1>
-    <span class="name">Jayvardhan Gaikwad</span>
-    <span class="role">Senior DevOps &amp;<br>Platform Engineer</span>
-  </h1>
-  <p class="hero-desc">
-    Building scalable cloud infrastructure, MLOps pipelines, and GPU inference platforms.
-    Specialized in Kubernetes, Terraform, and AI/ML infrastructure across Azure &amp; AWS.
-  </p>
-  <div class="hero-chips">
-    <span class="chip">Kubernetes</span>
-    <span class="chip">Terraform</span>
-    <span class="chip">MLOps</span>
-    <span class="chip">GPU Inference</span>
-    <span class="chip">Azure</span>
-    <span class="chip">AWS</span>
-    <span class="chip">CI/CD</span>
-    <span class="chip">TimescaleDB</span>
-    <span class="chip">Azure Data Factory</span>
-  </div>
-  <div class="hero-btns">
-    <a href="https://www.linkedin.com/in/jay-gaikwad8482/" target="_blank" class="btn-primary">Connect on LinkedIn ↗</a>
-    <a href="#projects" class="btn-ghost">View Projects</a>
-  </div>
-</div>
+<section class="hero">
+  <h1>I Build <span class="gradient">Cloud & AI Systems</span></h1>
+  <p>DevOps & MLOps Engineer focused on scalable infrastructure, Kubernetes, and AI platforms.</p>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stat">
-    <div class="stat-num">35%</div>
-    <div class="stat-label">Deployment time reduced</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">70%</div>
-    <div class="stat-label">Storage cost reduction</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">99.8%</div>
-    <div class="stat-label">Uptime maintained</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">25%</div>
-    <div class="stat-label">ML throughput increase</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">$14K+</div>
-    <div class="stat-label">Annual savings delivered</div>
-  </div>
-</div>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-header">
-    <span class="section-num">01</span>
-    <h2 class="section-title">Featured Projects</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="projects-grid">
-
-    <div class="project-card card-green">
-      <div class="project-header">
-        <div>
-          <div class="project-category">Data Infrastructure · Cost Optimization</div>
-          <div class="project-title">70% Storage Cost Reduction — Zero Downtime</div>
-        </div>
-        <span class="project-badge">Published Apr 2026</span>
-      </div>
-      <p class="project-desc">
-        Designed and implemented a smart data lifecycle system using TimescaleDB and Amazon S3 that automatically tiers data by age — hot, warm, and cold — while keeping everything instantly queryable via standard SQL. No application changes required. No developer disruption.
-      </p>
-      <div class="project-metrics">
-        <div class="metric"><span class="metric-val">70%</span><span class="metric-label">storage cost cut</span></div>
-        <div class="metric"><span class="metric-val">$14K+</span><span class="metric-label">annual savings</span></div>
-        <div class="metric"><span class="metric-val">60 TB</span><span class="metric-label">data managed</span></div>
-        <div class="metric"><span class="metric-val">0</span><span class="metric-label">breaking changes</span></div>
-      </div>
-      <div class="project-tags">
-        <span class="tag">TimescaleDB</span>
-        <span class="tag">Amazon S3</span>
-        <span class="tag">HyperTables</span>
-        <span class="tag">Data Lifecycle</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">Cost Engineering</span>
-      </div>
-      <div class="project-insight">
-        "Last 30 days → fast DB storage. 30–60 days → compressed. 60+ days → S3. Same SQL query works across all tiers — developers never notice the difference."
-      </div>
-    </div>
-
-    <div class="project-card card-blue">
-      <div class="project-header">
-        <div>
-          <div class="project-category">Data Engineering · Cloud ETL</div>
-          <div class="project-title">Scalable POS ETL Pipeline on Azure Data Factory</div>
-        </div>
-        <span class="project-badge">Published Mar 2026</span>
-      </div>
-      <p class="project-desc">
-        Built an end-to-end cloud ETL pipeline transforming raw Point-of-Sale CSV exports into structured, analytics-ready relational data. Used Azure Data Factory Data Flows for schema mapping, cleansing, type conversion, and conditional routing into PostgreSQL — enabling BI dashboards and automated reporting at scale.
-      </p>
-      <div class="project-metrics">
-        <div class="metric"><span class="metric-val">100%</span><span class="metric-label">automated ingestion</span></div>
-        <div class="metric"><span class="metric-val">4-stage</span><span class="metric-label">transformation pipeline</span></div>
-        <div class="metric"><span class="metric-val">ADF</span><span class="metric-label">orchestration</span></div>
-      </div>
-      <div class="project-tags">
-        <span class="tag">Azure Data Factory</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">Azure Blob Storage</span>
-        <span class="tag">ETL</span>
-        <span class="tag">Data Flows</span>
-        <span class="tag">BI Ready</span>
-      </div>
-      <div class="project-insight">
-        "Transformed a manual CSV reporting bottleneck into a fully automated cloud pipeline — from raw POS export to analytics-ready relational tables, with zero manual intervention."
-      </div>
-    </div>
-
-    <div class="project-card card-purple">
-      <div class="project-header">
-        <div>
-          <div class="project-category">MLOps · AIOps · Platform Engineering</div>
-          <div class="project-title">Self-Healing MLOps + AIOps Platform</div>
-        </div>
-        <span class="project-badge">Enterprise Scale</span>
-      </div>
-      <p class="project-desc">
-        Designed an enterprise-grade MLOps platform where monitoring triggers retraining, failures trigger intelligent root cause analysis via GenAI (AWS Bedrock), and deployments are fully automated on Kubernetes. A fusion of DevOps + MLOps + AIOps into one intelligent, self-managing system.
-      </p>
-      <div class="project-metrics">
-        <div class="metric"><span class="metric-val">25%</span><span class="metric-label">ML throughput gain</span></div>
-        <div class="metric"><span class="metric-val">Auto</span><span class="metric-label">retraining triggers</span></div>
-        <div class="metric"><span class="metric-val">0-skew</span><span class="metric-label">training-serving gap</span></div>
-      </div>
-      <div class="project-tags">
-        <span class="tag">Kafka</span>
-        <span class="tag">Feast</span>
-        <span class="tag">Airflow</span>
-        <span class="tag">Kubeflow</span>
-        <span class="tag">SageMaker</span>
-        <span class="tag">AWS Bedrock</span>
-        <span class="tag">Kubernetes</span>
-        <span class="tag">Prometheus</span>
-        <span class="tag">Grafana</span>
-        <span class="tag">IAM/RBAC</span>
-      </div>
-      <div class="project-insight">
-        "An AI system that doesn't just run models — it runs itself. Monitoring triggers retraining. Failures trigger intelligence. Deployments are fully automated."
-      </div>
-    </div>
-
-    <div class="project-card card-amber">
-      <div class="project-header">
-        <div>
-          <div class="project-category">AI/ML Infrastructure · GPU Platform</div>
-          <div class="project-title">AI/ML GPU Inference Platform</div>
-        </div>
-        <span class="project-badge">Production</span>
-      </div>
-      <p class="project-desc">
-        Built a scalable GPU inference platform using NVIDIA CUDA, Triton, and TorchServe. Integrated MLflow Model Registry for experiment tracking and reproducibility. Full observability via Prometheus and Grafana dashboards for inference latency, throughput, and GPU utilization metrics.
-      </p>
-      <div class="project-metrics">
-        <div class="metric"><span class="metric-val">25%</span><span class="metric-label">throughput increase</span></div>
-        <div class="metric"><span class="metric-val">Real-time</span><span class="metric-label">GPU monitoring</span></div>
-        <div class="metric"><span class="metric-val">MLflow</span><span class="metric-label">experiment tracking</span></div>
-      </div>
-      <div class="project-tags">
-        <span class="tag">NVIDIA CUDA</span>
-        <span class="tag">Triton</span>
-        <span class="tag">TorchServe</span>
-        <span class="tag">MLflow</span>
-        <span class="tag">Prometheus</span>
-        <span class="tag">Grafana</span>
-      </div>
-    </div>
-
-    <div class="project-card card-teal">
-      <div class="project-header">
-        <div>
-          <div class="project-category">Platform Engineering · Kubernetes</div>
-          <div class="project-title">Kubernetes Internal Developer Platform</div>
-        </div>
-        <span class="project-badge">Production</span>
-      </div>
-      <p class="project-desc">
-        Designed and built a Kubernetes-based Internal Developer Platform enabling self-service deployments for 10+ microservices. Fully automated via Helm + GitOps. Terraform modules provision cloud infrastructure across environments. Centralized observability with Prometheus, Grafana, and Alertmanager.
-      </p>
-      <div class="project-metrics">
-        <div class="metric"><span class="metric-val">35%</span><span class="metric-label">faster deployments</span></div>
-        <div class="metric"><span class="metric-val">10+</span><span class="metric-label">microservices</span></div>
-        <div class="metric"><span class="metric-val">99.8%</span><span class="metric-label">uptime</span></div>
-      </div>
-      <div class="project-tags">
-        <span class="tag">Kubernetes</span>
-        <span class="tag">Helm</span>
-        <span class="tag">GitOps</span>
-        <span class="tag">Terraform</span>
-        <span class="tag">Azure DevOps</span>
-        <span class="tag">GitHub Actions</span>
-        <span class="tag">Prometheus</span>
-        <span class="tag">Alertmanager</span>
-      </div>
-    </div>
-
-  </div>
+  <a href="resume.pdf" download class="btn">Download Resume</a>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-header">
-    <span class="section-num">02</span>
-    <h2 class="section-title">Technical Skills</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="skills-grid">
-    <div class="skill-group">
-      <div class="skill-group-title">Cloud Platforms</div>
-      <div class="skill-items">
-        <span class="skill-item">Azure</span>
-        <span class="skill-item">AWS</span>
-        <span class="skill-item">Azure Blob Storage</span>
-        <span class="skill-item">Amazon S3</span>
-        <span class="skill-item">SageMaker</span>
-        <span class="skill-item">AWS Bedrock</span>
-      </div>
+<section id="projects" class="section">
+  <h2>Projects</h2>
+
+  <div class="grid">
+    <div class="card" onclick="alert('Open Case Study')">
+      <h3>Cost Optimization System</h3>
+      <p>70% storage cost reduction</p>
     </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Containers &amp; Orchestration</div>
-      <div class="skill-items">
-        <span class="skill-item">Kubernetes</span>
-        <span class="skill-item">Docker</span>
-        <span class="skill-item">Helm</span>
-        <span class="skill-item">ArgoCD</span>
-        <span class="skill-item">GitOps</span>
-      </div>
+
+    <div class="card">
+      <h3>MLOps Platform</h3>
+      <p>Self-healing pipelines</p>
     </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Infrastructure as Code</div>
-      <div class="skill-items">
-        <span class="skill-item">Terraform</span>
-        <span class="skill-item">Reusable Modules</span>
-        <span class="skill-item">Multi-environment</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">CI/CD &amp; Automation</div>
-      <div class="skill-items">
-        <span class="skill-item">Azure DevOps</span>
-        <span class="skill-item">GitHub Actions</span>
-        <span class="skill-item">ML CI/CD</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">AI/ML Infrastructure</div>
-      <div class="skill-items">
-        <span class="skill-item">NVIDIA CUDA</span>
-        <span class="skill-item">Triton</span>
-        <span class="skill-item">TorchServe</span>
-        <span class="skill-item">MLflow</span>
-        <span class="skill-item">Feast</span>
-        <span class="skill-item">Kubeflow</span>
-        <span class="skill-item">Airflow</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Data Engineering</div>
-      <div class="skill-items">
-        <span class="skill-item">Azure Data Factory</span>
-        <span class="skill-item">TimescaleDB</span>
-        <span class="skill-item">PostgreSQL</span>
-        <span class="skill-item">Kafka</span>
-        <span class="skill-item">ETL Pipelines</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Observability</div>
-      <div class="skill-items">
-        <span class="skill-item">Prometheus</span>
-        <span class="skill-item">Grafana</span>
-        <span class="skill-item">Alertmanager</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Networking &amp; Security</div>
-      <div class="skill-items">
-        <span class="skill-item">Nginx</span>
-        <span class="skill-item">TLS</span>
-        <span class="skill-item">Load Balancing</span>
-        <span class="skill-item">Zero Trust</span>
-        <span class="skill-item">RBAC/IAM</span>
-      </div>
+
+    <div class="card">
+      <h3>Kubernetes Platform</h3>
+      <p>GitOps automation</p>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-header">
-    <span class="section-num">03</span>
-    <h2 class="section-title">Experience</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="exp-card">
-    <div class="exp-header">
-      <div>
-        <div class="exp-role">DevOps Engineer</div>
-        <div class="exp-company">PureSoft Solutions LLP</div>
-      </div>
-      <div class="exp-period">Jan 2023 – Present</div>
-    </div>
-    <ul class="exp-bullets">
-      <li>Designed CI/CD pipelines for 10+ microservices, reducing deployment time by 35%</li>
-      <li>Managed multi-cloud infrastructure across Azure and AWS, maintaining 99.8% uptime</li>
-      <li>Implemented Prometheus + Grafana monitoring stack for full infrastructure observability</li>
-      <li>Optimized Nginx reverse proxy configuration, improving p95 latency by 20%</li>
-      <li>Provisioned GPU infrastructure for ML inference workloads with real-time performance monitoring</li>
-      <li>Built ETL pipelines using Azure Data Factory and Azure SQL for sales data migration</li>
-      <li>Implemented smart storage lifecycle system reducing costs by 70% using TimescaleDB + S3 tiering</li>
-    </ul>
+<section class="section">
+  <h2>Impact</h2>
+
+  <div class="grid">
+    <div><div class="counter" data-target="70">0</div>Cost Reduction %</div>
+    <div><div class="counter" data-target="99">0</div>Uptime %</div>
+    <div><div class="counter" data-target="35">0</div>Deployment Speed %</div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-name">Jayvardhan Gaikwad</div>
-  <p style="color: var(--muted); font-size: 0.85rem; font-family: var(--mono); margin-top: 0.25rem;">
-    <span class="glow-dot"></span>Open to Work — Remote &amp; Freelance
-  </p>
-  <div class="footer-links">
-    <a href="https://www.linkedin.com/in/jay-gaikwad8482/" target="_blank">LinkedIn ↗</a>
-    <a href="tel:+918482861955">+91 8482861955</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-  </div>
-  <p style="margin-top: 2rem; color: var(--dim); font-size: 0.75rem; font-family: var(--mono);">Pune, India · DevOps · MLOps · Platform Engineering</p>
+  © 2026 Jayvardhan Gaikwad
 </footer>
+
+<button class="theme" onclick="toggleTheme()">🌙</button>
+
+<script>
+
+/* ===== PARTICLE BG ===== */
+const c=document.getElementById("bg");
+const ctx=c.getContext("2d");
+c.width=innerWidth;
+c.height=innerHeight;
+
+let particles=[];
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*c.width,
+y:Math.random()*c.height,
+dx:Math.random()-0.5,
+dy:Math.random()-0.5
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,c.width,c.height);
+particles.forEach(p=>{
+ctx.fillStyle="#4f9cf9";
+ctx.fillRect(p.x,p.y,2,2);
+p.x+=p.dx;
+p.y+=p.dy;
+});
+requestAnimationFrame(draw);
+}
+draw();
+
+/* ===== CURSOR ===== */
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+});
+
+/* ===== COUNTER ===== */
+const counters=document.querySelectorAll(".counter");
+
+const startCounter=()=>{
+counters.forEach(c=>{
+let target=+c.dataset.target;
+let count=0;
+let step=target/50;
+
+let interval=setInterval(()=>{
+count+=step;
+if(count>=target){
+c.innerText=target;
+clearInterval(interval);
+}else{
+c.innerText=Math.floor(count);
+}
+},30);
+});
+}
+
+window.addEventListener("scroll",startCounter,{once:true});
+
+/* ===== THEME ===== */
+function toggleTheme(){
+document.body.classList.toggle("light");
+localStorage.setItem("theme",
+document.body.classList.contains("light")?"light":"dark");
+}
+
+if(localStorage.getItem("theme")==="light"){
+document.body.classList.add("light");
+}
+
+</script>
 
 </body>
 </html>
